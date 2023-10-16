@@ -3,7 +3,7 @@ import { adminRoot } from './defaultValues';
 const data = [
   {
     id: 'gogo',
-    icon: 'iconsminds-air-balloon-1',
+    icon: 'simple-icon-frame',
     label: 'menu.gogo',
     to: `${adminRoot}/gogo`,
     subs: [
@@ -16,16 +16,15 @@ const data = [
   },
   {
     id: 'generarqr',
-    icon: 'iconsminds-air-balloon-1',
+    icon: 'simple-icon-frame',
     label: 'menu.generarqr',
     to: `${adminRoot}/generarqr`,
-    subs: [
-      {
-        icon: 'simple-icon-paper-plane',
-        label: 'menu.generarqr',
-        to: `${adminRoot}/generarqr/start`,
-      },
-    ],
+  },
+  {
+    id: 'cobranza',
+    icon: 'iconsminds-police-station',
+    label: 'menu.cobranza',
+    to: `${adminRoot}/cobranza`,
   },
   {
     id: 'secondmenu',

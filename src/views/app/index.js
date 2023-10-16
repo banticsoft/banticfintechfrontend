@@ -8,6 +8,9 @@ import AppLayout from 'layout/AppLayout';
 const Gogo = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ './gogo')
 );
+const Generar = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ './generarqr')
+);
 const SecondMenu = React.lazy(() =>
   import(/* webpackChunkName: "viwes-second-menu" */ './second-menu')
 );
@@ -16,6 +19,8 @@ const BlankPage = React.lazy(() =>
 );
 
 const App = ({ match }) => {
+  console.log('el valor de match es: ')
+  console.log(match) // {path: '/app', url: '/app', isExact: false, params: {…}}
   return (
     <AppLayout>
       <div className="dashboard-wrapper">
@@ -25,6 +30,10 @@ const App = ({ match }) => {
             <Route
               path={`${match.url}/gogo`}
               render={(props) => <Gogo {...props} />}
+            />
+            <Route
+              path={`${match.url}/generarqr`}
+              render={(props) => <Generar {...props} />}
             />
             <Route
               path={`${match.url}/second-menu`}
