@@ -11,6 +11,12 @@ const Gogo = React.lazy(() =>
 const Generar = React.lazy(() =>
   import(/* webpackChunkName: "viwes-gogo" */ './generarqr')
 );
+const VerQR = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ './verqr')
+);
+const Cobranza = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-gogo" */ './cobranza')
+);
 const SecondMenu = React.lazy(() =>
   import(/* webpackChunkName: "viwes-second-menu" */ './second-menu')
 );
@@ -34,6 +40,14 @@ const App = ({ match }) => {
             <Route
               path={`${match.url}/generarqr`}
               render={(props) => <Generar {...props} />}
+            />
+            <Route
+              path={`${match.url}/verqr`}
+              render={(props) => <VerQR {...props} />}
+            />
+            <Route
+              path={`${match.url}/cobranza`}
+              render={(props) => <Cobranza {...props} />}
             />
             <Route
               path={`${match.url}/second-menu`}

@@ -53,6 +53,10 @@ const Login = ({ history, loading, error, loginUserAction }) => {
   const onUserLogin = (values) => {
     if (!loading) {
       if (values.email !== '' && values.password !== '') {
+        console.log("los valores en values")
+        console.log(values)
+        console.log("los valores en history")
+        console.log(history)
         loginUserAction(values, history);
       }
     }

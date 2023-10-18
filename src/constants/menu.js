@@ -16,6 +16,41 @@ const data = [
   },
   {
     id: 'generarqr',
+    icon: 'iconsminds-qr-code',
+    label: 'menu.generarqr',
+    to: `${adminRoot}/generarqr`,
+  },
+  {
+    id: 'verqr',
+    icon: 'simple-icon-frame',
+    label: 'menu.verqr',
+    to: `${adminRoot}/verqr`,
+  },
+  {
+    id: 'cobranza',
+    icon: 'iconsminds-police-station',
+    label: 'menu.cobranza',
+    to: `${adminRoot}/cobranza`,
+  },
+  
+];
+
+/* const datacp = [
+  {
+    id: 'gogo',
+    icon: 'simple-icon-frame',
+    label: 'menu.gogo',
+    to: `${adminRoot}/gogo`,
+    subs: [
+      {
+        icon: 'simple-icon-paper-plane',
+        label: 'menu.start',
+        to: `${adminRoot}/gogo/start`,
+      },
+    ],
+  },
+  {
+    id: 'generarqr',
     icon: 'simple-icon-frame',
     label: 'menu.generarqr',
     to: `${adminRoot}/generarqr`,
@@ -53,5 +88,5 @@ const data = [
     to: 'https://gogo-react-docs.coloredstrategies.com/',
     newWindow: true,
   },
-];
+]; */
 export default data;

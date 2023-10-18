@@ -30,14 +30,14 @@ const GenerarQR = ({ match }) => {
         <>
           <Row>
             <Colxx xxs="12">
-              <Breadcrumb heading="menu.blank-page" match={match} />
+              <Breadcrumb heading="generarqr" match={match} />
               <Separator className="mb-5" />
             </Colxx>
           </Row>
           <Row>
             <Colxx xxs="12" className="mb-4">
               <p>
-                <IntlMessages id="menu.blank-page" />
+                <IntlMessages id="generarqr" />
               </p>          
     
               <div className="flex h-[calc(100vh-100px)] items-center justify-center">

@@ -35,7 +35,7 @@ export const servicePath = 'https://api.coloredstrategies.com';
 
 export const currentUser = {
   id: 1,
-  title: 'Ronel',
+  title: 'Reinaldo',
   img: '/assets/img/profiles/l-1.jpg',
   date: 'Last seen today 15:24',
   role: UserRole.Admin,

@@ -55,7 +55,8 @@
     "react/prop-types": 0,
     "prettier/prettier": [
       "warn"
-    ]
+    ],
+    "no-plusplus": "off"
   },
   "globals": {
     "window": true,
