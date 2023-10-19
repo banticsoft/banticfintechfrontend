@@ -49,8 +49,14 @@ class App extends React.Component {
   }
 
   render() {
+    // console.log("el valor de la props ==========")
+    // console.log(this.props)
     const { locale } = this.props;
+    // console.log("el valor de la locale ==========")
+    // console.log(locale)
     const currentAppLocale = AppLocale[locale];
+    // console.log("el valor de la currentAppLocale ==========")
+    // console.log(currentAppLocale)
 
     return (
       <div className="h-100">
