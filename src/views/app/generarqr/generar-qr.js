@@ -1,28 +1,36 @@
-import React from 'react';
-import { Row, Label, Button } from 'reactstrap';
+import React, { useState } from 'react';
+import { Row, Label, Button, FormGroup, CardBody } from 'reactstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
-import Breadcrumb from 'containers/navs/Breadcrumb';
-import { getVersion } from 'api/auth';
+import { Formik, Form, Field } from 'formik';
+// import Breadcrumb from 'containers/navs/Breadcrumb';
+import { connect } from 'react-redux';
+import { generarQR } from 'redux/actions';
 
-const GenerarQR = ({ match }) => {
+const validateMount = (value) => {
+  let error;
+  if (!value) {
+    error = 'Please enter your Monto';
+  }
+  return error;
+};
 
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          console.log('ANTES DE HACER LA PETICION')
-          const respuesta = await getVersion();
-          console.log(respuesta)                     
-          // return respuesta.data;
-        } catch (error) {
-            console.log(error.response.data)
-            if(Array.isArray(error.response.data)){
-                // return setErrors(error.response.data);
-                return null;
-            }        
-        }
-        // navigate('/verqr')
-        return null
+
+const GenerarQR = ({ history, miqr, generarQRAction }) => {
+
+  const [amount] = useState('');
+  const [glosa] = useState('');
+  console.log("valor del qr ...")
+  console.log(miqr)
+
+  const initialValues = { amount, glosa };
+
+      const onSubmit = (values) => {
+        console.log(values.amount)
+        console.log(values.glosa)
+        if (values.amout !== '' && values.glosa !== '') {
+          generarQRAction(values, history);
+        }      
       };
       console.log("generando qr..")
     
@@ -30,7 +38,7 @@ const GenerarQR = ({ match }) => {
         <>
           <Row>
             <Colxx xxs="12">
-              <Breadcrumb heading="generarqr" match={match} />
+              {/* <Breadcrumb heading="generarqr" match='match' /> */}
               <Separator className="mb-5" />
             </Colxx>
           </Row>
@@ -38,35 +46,73 @@ const GenerarQR = ({ match }) => {
             <Colxx xxs="12" className="mb-4">
               <p>
                 <IntlMessages id="generarqr" />
-              </p>          
-    
-              <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-                <div className="bg-white p-5 rounded-2 text-secondary" style={{ width: '25 rem', border: '1 px solid #EE7A19' }}>
-                    <div className="flex justify-center">
-                        {/* <img src={ logoEmpresa } alt="login-icon" style={{ height: 7+'rem', marginBottom: 2.5+"rem" }} /> */}
-                    </div>                
-    
-                    <form onSubmit={onSubmit}>
-                        <div className="input-group mt-4">                        
-                            <Label className="w-100 mb-2" style={{ fontWeight: 'bold' }} htmlFor="glosa"> Glosa:</Label>      
-                            <input className="w-full bg-zinc-50 border-solid border-2 border-orange-300 px-4 py-2 rounded-md my-2" type="text" name="glosa" id="glosa" placeholder="Glosa"/>                        
-                        </div>
-    
-                        <div className="input-group mt-3">
-                            <Label className="w-100 mb-2" style={{ fontWeight: "bold" }} htmlFor="clave">Monto:</Label>                        
-                            <input className="w-full bg-zinc-50 border-solid border-2 border-orange-300 px-4 py-2 rounded-md my-2" type="number" name="monto" id="monto" min="0" step="0.01" placeholder="Monto"/>                                               
-                        </div>
-    
-                        <div className="flex w-full justify-center">                    
+              </p>             
+
+            <Row>
+            <Colxx xxs="4"/>
+            <Colxx xxs="3">
+              <CardBody>
+                <div className="form-side">
+                  <Formik initialValues={initialValues} onSubmit={onSubmit}>
+                    {({ errors, touched }) => (
+                      <Form className="av-tooltip tooltip-label-bottom">
+                        <FormGroup className="form-group has-float-label">
+                          <Label>
+                            <IntlMessages id="monto" />
+                          </Label>
+                          <Field
+                            className="form-control"
+                            name="amount"
+                            type="number"
+                            validate={validateMount}
+                          />
+                          {errors.amout && touched.amout && (
+                            <div className="invalid-feedback d-block">
+                              {errors.amout}
+                            </div>
+                          )}
+                        </FormGroup>
+                        <FormGroup className="form-group has-float-label">
+                          <Label>
+                            <IntlMessages id="glosa" />
+                          </Label>
+                          <Field
+                            className="form-control"
+                            type="text"
+                            name="glosa"
+                            
+                          />
+                          {errors.glosa && touched.glosa && (
+                            <div className="invalid-feedback d-block">
+                              {errors.glosa}
+                            </div>
+                          )}
+                          <div className="flex w-full justify-center">                    
                             <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Generar QR</Button>
                         </div>
-                    </form>
-    
+                        </FormGroup>
+                        
+                      </Form>
+                    )}
+                  </Formik>             
                 </div>
-            </div>
+              </CardBody>
+              
+            </Colxx>
+            </Row>
+            
             </Colxx>
           </Row>
         </>
       );
     };
-export default GenerarQR;
+// export default GenerarQR;
+
+const mapStateToProps = ({ qrReducer }) => {
+  const { miqr, erro } = qrReducer;
+  return { miqr, erro };
+};
+
+export default connect(mapStateToProps, {
+  generarQRAction: generarQR,
+})(GenerarQR);

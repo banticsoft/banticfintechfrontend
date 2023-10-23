@@ -1,5 +1,5 @@
-import { getCurrentUser } from 'helpers/Utils';
-import { isAuthGuardActive, currentUser } from 'constants/defaultValues';
+// import { getCurrentUser } from 'helpers/Utils';
+// import { isAuthGuardActive, currentUser } from 'constants/defaultValues';
 import {
   GENERAR_QR,
   GENERAR_QR_SUCCESS,
@@ -15,13 +15,13 @@ export default (state = INIT_STATE, action) => {
   switch (action.type) {
     case GENERAR_QR:
       return { ...state, erro: '' };
-    case LOGIN_USER_SUCCESS:
+    case GENERAR_QR_SUCCESS:
       return {
         ...state,
-        miqr: action.payload,
+        miqr: action.payload.qr,
         error: '',
       };
-    case GENERAR_QR_SUCCESS:
+    case GENERAR_QR_ERROR:
       return {
         ...state,
         erro: action.payload.message,

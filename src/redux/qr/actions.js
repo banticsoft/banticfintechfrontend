@@ -6,13 +6,13 @@ import {
 
 // actions creators exportados como funciones
 
-export const generarQR = (user, history) => ({
+export const generarQR = (data, history) => ({
   type: GENERAR_QR,
-  payload: { user, history },
+  payload: { data, history },
 });
-export const generarQRSuccess = (user) => ({
+export const generarQRSuccess = (data) => ({
   type: GENERAR_QR_SUCCESS,
-  payload: user,
+  payload: data,
 });
 export const generarQRError = (message) => ({
   type: GENERAR_QR_ERROR,

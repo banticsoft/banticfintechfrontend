@@ -21,3 +21,5 @@ export {
   loginUser,
   resetPassword,
 } from './auth/actions';
+
+export { generarQR, generarQRSuccess, generarQRError} from './qr/actions'

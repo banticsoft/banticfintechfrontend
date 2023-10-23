@@ -2,14 +2,16 @@ import { all, call, fork, put, takeEvery } from 'redux-saga/effects'; // takeLas
 import { auth } from 'helpers/Firebase';
 import { adminRoot, currentUser } from 'constants/defaultValues';
 import { setCurrentUser } from 'helpers/Utils';
- import { loginRequest } from 'api/auth';
- import { v4 as uuid} from 'uuid'
+ import { loginRequest, generarQRRequest } from 'api/auth';
+ import { v4 as uuid} from 'uuid';
+ import { generarQRError, generarQRSuccess } from 'redux/qr/actions';
 import {
   LOGIN_USER,
   REGISTER_USER,
   LOGOUT_USER,
   FORGOT_PASSWORD,
   RESET_PASSWORD,
+  GENERAR_QR
 } from '../contants';
 
 import {
@@ -22,6 +24,7 @@ import {
   resetPasswordSuccess,
   resetPasswordError,
 } from './actions';
+
 
 export function* watchLoginUser() {
   console.log("esta entrando aca #1")
@@ -67,6 +70,31 @@ function* loginWithEmailPassword({ payload }) { // action.payload
     console.log(error.response.data)
     yield put(loginUserError(error.response.data[0]));
   }
+}
+
+const generateQRAsync = async (amount, glosa) => 
+  // eslint-disable-next-line no-return-await
+  await generarQRRequest({amount, glosa})
+
+function* generateQR({ payload }) { // action.payload
+  const { amount, glosa } = payload.data;
+  const { history } = payload;
+  try {
+    const respuesta = yield call(generateQRAsync, amount, glosa); // call -> para consumir la API
+    console.log(respuesta.data)
+    // const item = { uid: uuid(), ...currentUser };
+    yield put(generarQRSuccess(respuesta.data)); // put -> despachamos el action 
+    history.push(`${adminRoot}/verqr`);    
+  } catch (error) {
+    console.log(error.response.data)
+    yield put(generarQRError(error.response.data[0]));
+  }
+}
+
+
+export function* watchGenerarQR() {
+  // eslint-disable-next-line no-use-before-define
+  yield takeEvery(GENERAR_QR, generateQR); // start loginWithEmailPassword when LOGIN_USER is dispatched
 }
 
 export function* watchRegisterUser() {
@@ -196,5 +224,6 @@ export default function* rootSaga() {
     fork(watchRegisterUser),
     fork(watchForgotPassword),
     fork(watchResetPassword),
+    fork(watchGenerarQR),
   ]);
 }
