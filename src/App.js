@@ -37,6 +37,8 @@ const ViewUnauthorized = React.lazy(() =>
 
 class App extends React.Component {
   constructor(props) {
+    // console.log("valor de props en el constructor")
+     console.log(props) // Object{currentUser: {id: 1, title: 'reinaldo', img: '/assets/img/profile/1-1.jpg'} locale: "en"}
     super(props);
     const direction = getDirection();
     if (direction.isRtl) {
@@ -49,7 +51,7 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log("el valor de la props ==========")
+    // console.log("el valor de la props en el render==========")
     // console.log(this.props)
     const { locale } = this.props;
     // console.log("el valor de la locale ==========")
@@ -111,7 +113,8 @@ class App extends React.Component {
 const mapStateToProps = ({ authUser, settings }) => {
   const { currentUser } = authUser;
   const { locale } = settings;
-  return { currentUser, locale };
+  const contador = 10;
+  return { currentUser, locale, contador };
 };
 const mapActionsToProps = {};
 

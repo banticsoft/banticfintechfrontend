@@ -3,6 +3,7 @@ import { Button, Row } from 'reactstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import Breadcrumb from 'containers/navs/Breadcrumb';
+// import ImageB64 from 'components/base64toimg/ImageB64'
 
 const VerQRPage = ({ match }) => {
 

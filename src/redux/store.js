@@ -15,7 +15,7 @@ export function configureStore(initialState) {
     compose(applyMiddleware(...middlewares))
   );
 
-  sagaMiddleware.run(sagas);
+  sagaMiddleware.run(sagas); // ejecutamos los sagas
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {

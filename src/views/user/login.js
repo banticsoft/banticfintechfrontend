@@ -41,6 +41,7 @@ const validateUser = (value) => {
 };
 
 const Login = ({ history, loading, error, loginUserAction }) => {
+  console.log("valor de loading en el componente: ", loading)
   const [email] = useState('');
   const [password] = useState('');
 
@@ -51,6 +52,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
   }, [error]);
 
   const onUserLogin = (values) => {
+    console.log("valor de loading en la funcion: ", loading)
     if (!loading) {
       if (values.email !== '' && values.password !== '') {
         console.log("los valores en values")

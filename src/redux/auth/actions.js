@@ -14,6 +14,8 @@ import {
   RESET_PASSWORD_ERROR,
 } from '../contants';
 
+// actions creators exportados como funciones
+
 export const loginUser = (user, history) => ({
   type: LOGIN_USER,
   payload: { user, history },

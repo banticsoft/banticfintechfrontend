@@ -37,6 +37,8 @@ export default (state = INIT_STATE, action) => {
         error: '',
       };
     case LOGIN_USER_ERROR:
+      console.log("action.payload")
+      console.log(action.payload)
       return {
         ...state,
         loading: false,
