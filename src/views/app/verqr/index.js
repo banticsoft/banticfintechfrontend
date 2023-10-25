@@ -1,14 +1,33 @@
-import React from 'react';
-import { Button, Row } from 'reactstrap';
+import React, { useState } from 'react';
+import { 
+  Button, 
+  Row,
+  Card,
+  CardBody,
+  // CardTitle,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 // import Breadcrumb from 'containers/navs/Breadcrumb';
 import ImageB64 from 'components/base64toimg/ImageB64';
 import { connect } from 'react-redux';
+import verificadoImg from 'assets/img/verificado/verificado.png'
 // import ImageB64 from 'components/base64toimg/ImageB64'
 
 const VerQRPage = ({ miqr }) => {
+
+  const [modalBasic, setModalBasic] = useState(false);
+
+  // const [isVerificado, setIsverificado] = useState(false);
+
+ /*  const handleVerificado = () => {
+    setIsverificado(!isVerificado)
+  } */
 
   const descargar = async (blobURLPublic) => {
     const imagen = await fetch(blobURLPublic)
@@ -64,26 +83,66 @@ const VerQRPage = ({ miqr }) => {
             <IntlMessages id="verqr" />
           </p>
 
-          <div className="flex h-[calc(100vh-50px)] items-center justify-center">
-             <div className="bg-white p-5 rounded-2 text-secondary" style={{ width: '35 rem', border: '1 px solid #EE7A19'}}>
-            <div className="flex justify-center">
-              { miqr ? (<ImageB64 base64String = {miqr}/>) : <h3>debes generar un nuevo QR ...</h3>}
-            </div>
+          <div className="d-flex justify-content-center align-items-center vh-60">
+            <div className="p-5 rounded-2 text-secondary" style={{ width: '35 rem', border: '1 px solid #EE7A19'}}>
+              <div className="d-flex justify-content-center">
+                { miqr ? (<ImageB64 base64String = {miqr}/>) : <h3>debes generar un nuevo QR ...</h3>}
+              </div>
 
-            {/* imprimir ? (<PDFViewer style={{width: "100%", height: "90vh"}}> <ImprimirPDFPage/> </PDFViewer>) : <h1>cargando ...</h1> */} 
-            {/* {imprimir ? (<h1> vas a imprimir algo </h1>) : <h1>cargando ...</h1>} */}
+              {/* imprimir ? (<PDFViewer style={{width: "100%", height: "90vh"}}> <ImprimirPDFPage/> </PDFViewer>) : <h1>cargando ...</h1> */} 
+              {/* {imprimir ? (<h1> vas a imprimir algo </h1>) : <h1>cargando ...</h1>} */}
 
-            <div className="flex gap-x-2 w-full justify-between">                    
-                <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2' onClick={ handleGuardarQR }>Guardar</Button>
-                <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Imprimir</Button>
-                
-                <NavLink to="/app/generarqr/generarqr">
-                    <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Nuevo QR</Button>
-                </NavLink>                
-                <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2'>Verificar</Button>
+              {/* <div className="flex gap-x-2 w-full justify-between">   */}                  
+              <div className="d-flex justify-content-around">                    
+                  <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2' onClick={ handleGuardarQR }>Guardar</Button>
+                  <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Imprimir</Button>
+                  
+                  <NavLink to="/app/generarqr/generarqr">
+                      <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Nuevo QR</Button>
+                  </NavLink>                
+                  {/* <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificado}>Verificar</Button> */}
+                  <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={() => setModalBasic(true)}>Verificar</Button>
+                                 
+              </div>
             </div>
-        </div>
-    </div> 
+          </div> 
+
+          {/* { isVerificado ? (
+            <div className="d-flex justify-content-center">
+              <img src={ verificadoImg } alt="verify" style={{ height: '14rem', width: "15rem" }} />
+            </div>
+          ) :  
+            undefined
+          }   */}  
+
+          <Card className="mb-4">
+            <CardBody>
+              
+              <div>
+                <Modal
+                  isOpen={modalBasic}
+                  toggle={() => setModalBasic(!modalBasic)}
+                >
+                  <ModalHeader>
+                    <IntlMessages id="Verificado" />
+                  </ModalHeader>
+                  <ModalBody>
+                    <div className="d-flex justify-content-center">
+                      <img src={ verificadoImg } alt="verify" style={{ height: '14rem', width: "15rem" }} />
+                    </div>                 
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      color="primary"
+                      onClick={() => setModalBasic(false)}
+                    >
+                      Aceptar
+                    </Button>{' '}                    
+                  </ModalFooter>
+                </Modal>
+              </div>
+            </CardBody>
+          </Card>
 
         </Colxx>
       </Row>

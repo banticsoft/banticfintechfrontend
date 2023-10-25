@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 // import logo from './../../assets/img/logo.png'
-// import logo from 'assets/img/logo/logo.png'
+import logo from 'assets/img/logo/logo.jpeg'
 
 import {
   UncontrolledDropdown,
@@ -282,6 +282,15 @@ const TopNav = ({
         <span className="logo-mobile d-block d-xs-none" />
       </NavLink> */}
 
+      <NavLink className="navbar-logo" to='#'>         
+        <img src={ logo } alt="login-icon" style={{ height: '3rem', width: "11.5rem" }} />
+        <span className="logo-mobile d-block d-xs-none" />
+      </NavLink> 
+
+      {/* <div className="flex justify-center">
+          <img src={ logo } alt="login-icon" style={{ height: '3rem', width: "11.5rem" }} />
+      </div> */}
+
       <div className="navbar-right">
         {isDarkSwitchActive && <TopnavDarkSwitch />}
         <div className="header-icons d-inline-block align-middle">
@@ -303,9 +312,9 @@ const TopNav = ({
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
             <DropdownToggle className="p-0" color="empty">
-              <span className="name mr-1">Sarah Kortney</span>
+              <span className="name mr-1">Reinaldo Jimenez</span>
               <span>
-                <img alt="Profile" src="/assets/img/profiles/l-1.jpg" />
+                <img alt="Profile" src="/assets/img/profiles/l-3.jpg" />
               </span>
             </DropdownToggle>
             <DropdownMenu className="mt-3" right>

@@ -57,7 +57,9 @@ const GenerarQR = ({ history, miqr, generarQRAction }) => {
                     {({ errors, touched }) => (
                       <Form className="av-tooltip tooltip-label-bottom">
                         <FormGroup className="form-group has-float-label">
-                          <Label>
+                          <Label
+                            style={{ fontWeight: 'bold', fontSize: '14px'}}
+                          >
                             <IntlMessages id="monto" />
                           </Label>
                           <Field
@@ -72,8 +74,10 @@ const GenerarQR = ({ history, miqr, generarQRAction }) => {
                             </div>
                           )}
                         </FormGroup>
-                        <FormGroup className="form-group has-float-label">
-                          <Label>
+                        <FormGroup className="form-group has-float-label mt-4">
+                          <Label
+                            style={{ fontWeight: 'bold', fontSize: '14px'}}
+                          >
                             <IntlMessages id="glosa" />
                           </Label>
                           <Field
@@ -87,7 +91,7 @@ const GenerarQR = ({ history, miqr, generarQRAction }) => {
                               {errors.glosa}
                             </div>
                           )}
-                          <div className="flex w-full justify-center">                    
+                          <div className="d-flex justify-content-center mt-3">                    
                             <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Generar QR</Button>
                         </div>
                         </FormGroup>
