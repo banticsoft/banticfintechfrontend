@@ -18,6 +18,9 @@ import ImageB64 from 'components/base64toimg/ImageB64';
 import { connect } from 'react-redux';
 import verificadoImg from 'assets/img/verificado/verificado.png'
 // import ImageB64 from 'components/base64toimg/ImageB64'
+import { verificarQR } from 'api/auth';
+import { getCurrentUser } from 'helpers/Utils';
+// import data from 'data/notifications';
 
 const VerQRPage = ({ miqr }) => {
 
@@ -41,9 +44,28 @@ const VerQRPage = ({ miqr }) => {
     document.body.removeChild(link);
   }
 
+  const handleVerificar = async() => {    
+    try {
+      const { title } = getCurrentUser();
+      const data = {
+        qrId: miqr.id, 
+        codBank: "1", 
+        user:  title
+      }
+
+      const resultado = await verificarQR(data);
+      if (resultado.data.codError === "0"){
+        console.log(resultado.data)
+        setModalBasic(true);
+      }      
+    } catch (error) {
+      console.log("error al verificar el QR")
+    }
+  }
+
   const handleGuardarQR = () => {
     let blobURLPublic = '';
-    const decodedImage = atob(miqr);
+    const decodedImage = atob(miqr.qr);
 
     // Crear un array de bytes
     const byteNumbers = new Array(decodedImage.length);
@@ -80,13 +102,13 @@ const VerQRPage = ({ miqr }) => {
       <Row>
         <Colxx xxs="12" className="mb-4">
           <p>
-            <IntlMessages id="verqr" />
+            <IntlMessages id="menu.verqr" />
           </p>
 
           <div className="d-flex justify-content-center align-items-center vh-60">
             <div className="p-5 rounded-2 text-secondary" style={{ width: '35 rem', border: '1 px solid #EE7A19'}}>
               <div className="d-flex justify-content-center">
-                { miqr ? (<ImageB64 base64String = {miqr}/>) : <h3>debes generar un nuevo QR ...</h3>}
+                { miqr ? (<ImageB64 base64String = {miqr.qr}/>) : <h3>debes generar un nuevo QR ...</h3>}
               </div>
 
               {/* imprimir ? (<PDFViewer style={{width: "100%", height: "90vh"}}> <ImprimirPDFPage/> </PDFViewer>) : <h1>cargando ...</h1> */} 
@@ -101,7 +123,7 @@ const VerQRPage = ({ miqr }) => {
                       <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Nuevo QR</Button>
                   </NavLink>                
                   {/* <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificado}>Verificar</Button> */}
-                  <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={() => setModalBasic(true)}>Verificar</Button>
+                  <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificar}>Verificar</Button>
                                  
               </div>
             </div>
@@ -124,7 +146,8 @@ const VerQRPage = ({ miqr }) => {
                   toggle={() => setModalBasic(!modalBasic)}
                 >
                   <ModalHeader>
-                    <IntlMessages id="Verificado" />
+                    {/* <IntlMessages id="Verificado" /> */}
+                    Verificado
                   </ModalHeader>
                   <ModalBody>
                     <div className="d-flex justify-content-center">

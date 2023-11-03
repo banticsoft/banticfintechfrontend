@@ -34,7 +34,8 @@ module.exports = {
   'menu.home': 'Inicio',
   'menu.app': 'Inicio',
   'menu.dashboards': 'Tableros',
-  'menu.gogo': 'Gogo',
+  'menu.gogo': 'Inicio',
+  'menu.inicio': 'Inicio',
   'menu.start': 'Comienzo',
   'menu.second-menu': 'Segundo menú',
   'menu.second': 'Segundo',
@@ -46,8 +47,20 @@ module.exports = {
   'menu.search': 'Búsqueda',
   'menu.docs': 'Docs',
   'menu.blank-page': 'Blank Page',
+  'menu.generarqr': 'Generar QR',
+  'menu.verqr': 'Ver QR',
+  'menu.cobranza': 'Cobranza',
+
   /* 04.Error  */
   'layouts.error-title': 'Vaya, parece que ha ocurrido un error!',
   'layouts.error-code': 'Código de error',
   'layouts.go-back-home': 'REGRESAR A INICIO',
+
+  /* 05.Generar QR */
+  'generarqr.monto': 'Monto',
+  'generarqr.glosa': 'Glosa',
+
+  /* 07.20.Tables */
+  'table.bootstrap-tables': 'Bootstrap Tables',
+  'table.bootstrap-basic': 'Basic Table',
 };

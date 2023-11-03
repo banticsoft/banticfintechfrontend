@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 const Genera = React.lazy(() =>
-  import(/* webpackChunkName: "start" */ './generar-qr')
+  import(/* webpackChunkName: "generar-qr" */ './generar-qr')
 );
 const Generar = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>

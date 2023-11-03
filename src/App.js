@@ -38,7 +38,7 @@ const ViewUnauthorized = React.lazy(() =>
 class App extends React.Component {
   constructor(props) {
     // console.log("valor de props en el constructor")
-     console.log(props) // Object{currentUser: {id: 1, title: 'reinaldo', img: '/assets/img/profile/1-1.jpg'} locale: "en"}
+    // console.log(props) // Object{currentUser: {id: 1, title: 'reinaldo', img: '/assets/img/profile/1-1.jpg'} locale: "en"}
     super(props);
     const direction = getDirection();
     if (direction.isRtl) {
@@ -91,11 +91,19 @@ class App extends React.Component {
                     exact
                     render={(props) => <ViewUnauthorized {...props} />}
                   />
+
+                  {/* <Route
+                    path="/"
+                    exact
+                    render={(props) => <ViewUser {...props} />}
+                  /> */}
+
                   <Route
                     path="/"
                     exact
                     render={(props) => <ViewHome {...props} />}
                   />
+
                   {/*
                   <Redirect exact from="/" to={adminRoot} />
                   */}

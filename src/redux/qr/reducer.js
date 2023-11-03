@@ -18,8 +18,8 @@ export default (state = INIT_STATE, action) => {
     case GENERAR_QR_SUCCESS:
       return {
         ...state,
-        miqr: action.payload.qr,
-        error: '',
+        miqr: action.payload,
+        erro: '',
       };
     case GENERAR_QR_ERROR:
       return {

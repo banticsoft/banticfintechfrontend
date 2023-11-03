@@ -5,13 +5,14 @@ import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 // import logo from './../../assets/img/logo.png'
 import logo from 'assets/img/logo/logo.jpeg'
+// import { getCurrentUser } from 'helpers/Utils';
 
 import {
   UncontrolledDropdown,
   DropdownItem,
   DropdownToggle,
   DropdownMenu,
-  Input,
+  // Input,
 } from 'reactstrap';
 
 import { NavLink } from 'react-router-dom';
@@ -26,39 +27,46 @@ import {
 } from 'redux/actions';
 
 import {
-  menuHiddenBreakpoint,
-  searchPath,
-  localeOptions,
+  // menuHiddenBreakpoint,
+  // searchPath,
+  // localeOptions,
   isDarkSwitchActive,
   // adminRoot,
 } from 'constants/defaultValues';
 
 import { MobileMenuIcon, MenuIcon } from 'components/svg';
-import { getDirection, setDirection } from 'helpers/Utils';
-import TopnavEasyAccess from './Topnav.EasyAccess';
+import { getDirection, setDirection, getCurrentUser } from 'helpers/Utils';
+// import TopnavEasyAccess from './Topnav.EasyAccess';
 import TopnavNotifications from './Topnav.Notifications';
 import TopnavDarkSwitch from './Topnav.DarkSwitch';
 
+// let currentUser = getCurrentUser();
+
+// eslint-disable-next-line
+let { title } = getCurrentUser();
+// console.log("el nomnre es: ", title)
+
 const TopNav = ({
-  intl,
+  // intl,
   history,
   containerClassnames,
   menuClickCount,
   selectedMenuHasSubItems,
-  locale,
+  // locale,
   setContainerClassnamesAction,
   clickOnMobileMenuAction,
   logoutUserAction,
   changeLocaleAction,
 }) => {
   const [isInFullScreen, setIsInFullScreen] = useState(false);
-  const [searchKeyword, setSearchKeyword] = useState('');
+  // const [searchKeyword, setSearchKeyword] = useState('');
 
-  const search = () => {
+  /* const search = () => {
     history.push(`${searchPath}?key=${searchKeyword}`);
     setSearchKeyword('');
-  };
+  }; */
 
+  /* eslint-disable */
   const handleChangeLocale = (_locale, direction) => {
     changeLocaleAction(_locale);
 
@@ -70,6 +78,7 @@ const TopNav = ({
       }, 500);
     }
   };
+  /* eslint-enable */
 
   const isInFullScreenFn = () => {
     return (
@@ -82,7 +91,7 @@ const TopNav = ({
     );
   };
 
-  const handleSearchIconClick = (e) => {
+  /* const handleSearchIconClick = (e) => {
     if (window.innerWidth < menuHiddenBreakpoint) {
       let elem = e.target;
       if (!e.target.classList.contains('search')) {
@@ -107,9 +116,9 @@ const TopNav = ({
       search();
     }
     e.stopPropagation();
-  };
+  }; */
 
-  const handleDocumentClickSearch = (e) => {
+  /* const handleDocumentClickSearch = (e) => {
     let isSearchClick = false;
     if (
       e.target &&
@@ -135,21 +144,21 @@ const TopNav = ({
       removeEventsSearch();
       setSearchKeyword('');
     }
-  };
+  }; */
 
-  const removeEventsSearch = () => {
+  /* const removeEventsSearch = () => {
     document.removeEventListener('click', handleDocumentClickSearch, true);
-  };
+  }; */
 
-  const addEventsSearch = () => {
+  /* const addEventsSearch = () => {
     document.addEventListener('click', handleDocumentClickSearch, true);
-  };
+  }; */
 
-  const handleSearchInputKeyPress = (e) => {
+  /* const handleSearchInputKeyPress = (e) => {
     if (e.key === 'Enter') {
       search();
     }
-  };
+  }; */
 
   const toggleFullScreen = () => {
     const isFS = isInFullScreenFn();
@@ -179,6 +188,7 @@ const TopNav = ({
 
   const handleLogout = () => {
     logoutUserAction(history);
+    
   };
 
   const menuButtonClick = (e, _clickCount, _conClassnames) => {
@@ -201,7 +211,8 @@ const TopNav = ({
     clickOnMobileMenuAction(_containerClassnames);
   };
 
-  const { messages } = intl;
+  // const { messages } = intl;
+  
   return (
     <nav className="navbar fixed-top">
       <div className="d-flex align-items-center navbar-left">
@@ -224,7 +235,7 @@ const TopNav = ({
           <MobileMenuIcon />
         </NavLink>
 
-        <div className="search">
+        {/* <div className="search">
           <Input
             name="searchKeyword"
             id="searchKeyword"
@@ -239,9 +250,9 @@ const TopNav = ({
           >
             <i className="simple-icon-magnifier" />
           </span>
-        </div>
+        </div> */}
 
-        <div className="d-inline-block">
+        {/* <div className="d-inline-block">
           <UncontrolledDropdown className="ml-2">
             <DropdownToggle
               caret
@@ -264,7 +275,8 @@ const TopNav = ({
               })}
             </DropdownMenu>
           </UncontrolledDropdown>
-        </div>
+        </div> */}
+
         {/* <div className="position-relative d-none d-none d-lg-inline-block">
           <a
             className="btn btn-outline-primary btn-sm ml-2"
@@ -275,17 +287,17 @@ const TopNav = ({
           </a>
         </div> */}
       </div>
+
       {/* logo de la empresa */}
       
-      {/* <NavLink className="navbar-logo" to={adminRoot}> 
+      {/* <NavLink className="navbar-logo" to='#'> 
         <span className="logo d-none d-xs-block" />
         <span className="logo-mobile d-block d-xs-none" />
       </NavLink> */}
 
       <NavLink className="navbar-logo" to='#'>         
-        <img src={ logo } alt="login-icon" style={{ height: '3rem', width: "11.5rem" }} />
-        <span className="logo-mobile d-block d-xs-none" />
-      </NavLink> 
+        <img src={ logo } alt="banticfintech" style={{ height: '3rem', width: "11.5rem" }} />
+      </NavLink>
 
       {/* <div className="flex justify-center">
           <img src={ logo } alt="login-icon" style={{ height: '3rem', width: "11.5rem" }} />
@@ -294,7 +306,7 @@ const TopNav = ({
       <div className="navbar-right">
         {isDarkSwitchActive && <TopnavDarkSwitch />}
         <div className="header-icons d-inline-block align-middle">
-          <TopnavEasyAccess />
+          {/* <TopnavEasyAccess /> */}
           <TopnavNotifications />
           <button
             className="header-icon btn btn-empty d-none d-sm-inline-block"
@@ -312,19 +324,21 @@ const TopNav = ({
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
             <DropdownToggle className="p-0" color="empty">
-              <span className="name mr-1">Reinaldo Jimenez</span>
+              {/* <span className="name mr-1"> { currentUser.title === undefined ? 'Reinaldo Jimenez': currentUser.title} </span> */}
+              <span className="name mr-1"> { title === undefined ? 'Invitado': title} </span>
+              {/* <span className="name mr-1"> Reinaldo Jimenez</span> */}
               <span>
                 <img alt="Profile" src="/assets/img/profiles/l-3.jpg" />
               </span>
             </DropdownToggle>
             <DropdownMenu className="mt-3" right>
-              <DropdownItem>Account</DropdownItem>
+              {/* <DropdownItem>Account</DropdownItem>
               <DropdownItem>Features</DropdownItem>
               <DropdownItem>History</DropdownItem>
-              <DropdownItem>Support</DropdownItem>
+              <DropdownItem>Support</DropdownItem> */}
               <DropdownItem divider />
               <DropdownItem onClick={() => handleLogout()}>
-                Sign out
+                Salir
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

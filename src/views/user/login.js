@@ -9,13 +9,14 @@ import { NotificationManager } from 'components/common/react-notifications';
 import { loginUser } from 'redux/actions';
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
+import logo from 'assets/img/logo/logo.jpeg'
 
 const validatePassword = (value) => {
   let error;
   if (!value) {
-    error = 'Please enter your password';
+    error = 'Por favor introduce tu contraseña.';
   } else if (value.length < 4) {
-    error = 'Value must be longer than 3 characters';
+    error = 'El campo debe tener más de 3 caracteres.';
   }
   return error;
 };
@@ -33,7 +34,7 @@ const validatePassword = (value) => {
 const validateUser = (value) => {
   let error;
   if (!value) {
-    error = 'Please enter your Username';
+    error = 'Por favor introduce tu Usuario';
   // } else if (/^[a-zA-Z0-9]{0,20}$/) {
     // error = 'Invalid email address';
   }
@@ -41,7 +42,7 @@ const validateUser = (value) => {
 };
 
 const Login = ({ history, loading, error, loginUserAction }) => {
-  console.log("valor de loading en el componente: ", loading)
+  // console.log("valor de loading en el componente: ", loading)
   const [email] = useState('');
   const [password] = useState('');
 
@@ -52,13 +53,13 @@ const Login = ({ history, loading, error, loginUserAction }) => {
   }, [error]);
 
   const onUserLogin = (values) => {
-    console.log("valor de loading en la funcion: ", loading)
+    // console.log("valor de loading en la funcion: ", loading)
     if (!loading) {
       if (values.email !== '' && values.password !== '') {
-        console.log("los valores en values")
-        console.log(values)
-        console.log("los valores en history")
-        console.log(history)
+        // console.log("los valores en values")
+        // console.log(values)
+        // console.log("los valores en history")
+        // console.log(history)
         loginUserAction(values, history);
       }
     }
@@ -73,19 +74,22 @@ const Login = ({ history, loading, error, loginUserAction }) => {
           <div className="position-relative image-side ">
             <p className="text-white h2">BANTIC FINTECH</p>
             <p className="white mb-0">
-              Please use your credentials to login.
-              <br />
+              Por favor use sus credenciales para iniciar sesión.
+              {/* <br />
               If you are not a member, please{' '}
               <NavLink to="/user/register" className="white">
                 register
               </NavLink>
-              .
+              . */}
             </p>
           </div>
           <div className="form-side">
-            <NavLink to="/" className="white">
-              <span className="logo-single" />
+            <div className='d-flex justify-content-center mb-3'>
+              <NavLink to="#" className="white">              
+                <img src={ logo } alt="banticfintech" style={{ height: '3rem', width: "11.5rem" }} />
             </NavLink>
+            </div>
+            
             <CardTitle className="mb-4">
               <IntlMessages id="user.login-title" />
             </CardTitle>
@@ -124,10 +128,10 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </div>
                     )}
                   </FormGroup>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <NavLink to="/user/forgot-password">
+                  <div className="d-flex justify-content-center align-items-center">
+                    {/* <NavLink to="/user/forgot-password">
                       <IntlMessages id="user.forgot-password-question" />
-                    </NavLink>
+                    </NavLink> */}
                     <Button
                       color="primary"
                       className={`btn-shadow btn-multiple-state ${

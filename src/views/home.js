@@ -6,7 +6,8 @@ import classnames from 'classnames';
 import { scroller } from 'react-scroll';
 import Headroom from 'react-headroom';
 // import GlideComponent from 'components/carousel/GlideComponent';
-import { buyUrl, adminRoot } from 'constants/defaultValues';
+// import { buyUrl, adminRoot } from 'constants/defaultValues';
+import { adminRoot } from 'constants/defaultValues';
 
 /* const slideSettings = {
   type: 'carousel',
@@ -302,7 +303,7 @@ const Home = () => {
           <li className="nav-item">
             <div className="separator" />
           </li>
-          <li className="nav-item text-center">
+          {/* <li className="nav-item text-center">
             <a
               className="btn btn-outline-primary btn-sm mobile-menu-cta"
               target="_blank"
@@ -311,7 +312,7 @@ const Home = () => {
             >
               BUY
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
 
@@ -373,16 +374,16 @@ const Home = () => {
                     THEMES
                   </a>
                 </li>
-                <li className="nav-item pl-4">
+                {/* <li className="nav-item pl-4">
                   <a
                     className="btn btn-outline-semi-light btn-sm pr-4 pl-4"
                     target="_blank"
                     rel="noopener noreferrer"
                     href={buyUrl}
                   >
-                    BUY
+                    BUY WEB
                   </a>
-                </li>
+                </li> */}
               </ul>
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
               <span
@@ -415,7 +416,7 @@ const Home = () => {
                   <div className="home-text">
                     <div className="display-1">
                       BANTIC FINTECH <br />
-                      MODIFICADO
+                      SOFTWARE
                     </div>
                     <p className="white mb-5">
                       Gogo is the combination of good design, quality code and
@@ -497,7 +498,7 @@ const Home = () => {
               <div className="row">
                 <div className="col-12" />
                 <div className="col-12 text-center">
-                  <p className="mb-0">2021 © ColoredStrategies</p>
+                  <p className="mb-0">2021 © BANTIC FINTECH</p>
                 </div>
               </div>
             </div>

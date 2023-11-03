@@ -25,16 +25,16 @@ const BlankPage = React.lazy(() =>
 );
 
 const App = ({ match }) => {
-  console.log('el valor de match es: ')
-  console.log(match) // {path: '/app', url: '/app', isExact: false, params: {…}}
+  // console.log('el valor de match es: ')
+  // console.log(match) // {path: '/app', url: '/app', isExact: false, params: {…}}
   return (
     <AppLayout>
       <div className="dashboard-wrapper">
         <Suspense fallback={<div className="loading" />}>
           <Switch>
-            <Redirect exact from={`${match.url}/`} to={`${match.url}/gogo`} />
+            <Redirect exact from={`${match.url}/`} to={`${match.url}/inicio`} />
             <Route
-              path={`${match.url}/gogo`}
+              path={`${match.url}/inicio`}
               render={(props) => <Gogo {...props} />}
             />
             <Route

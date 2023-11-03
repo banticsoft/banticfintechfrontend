@@ -34,7 +34,8 @@ module.exports = {
   'menu.home': 'Home',
   'menu.app': 'Home',
   'menu.dashboards': 'Dashboards',
-  'menu.gogo': 'Gogo',
+  'menu.gogo': 'Inicio',
+  'menu.inicio': 'Inicio',
   'menu.start': 'Start',
   'menu.second-menu': 'Second Menu',
   'menu.second': 'Second',
@@ -46,9 +47,21 @@ module.exports = {
   'menu.search': 'Search',
   'menu.docs': 'Docs',
   'menu.blank-page': 'Blank Page',
+  'menu.generarqr': 'Generar QR',
+  'menu.verqr': 'Ver QR',
+  'menu.cobranza': 'Cobranza',
+
 
   /* 04.Error Page */
   'pages.error-title': 'Ooops... looks like an error occurred!',
   'pages.error-code': 'Error code',
   'pages.go-back-home': 'GO BACK HOME',
+
+  /* 05.Generar QR */
+  'generarqr.monto': 'Monto',
+  'generarqr.glosa': 'Glosa',
+
+  /* 07.20.Tables */
+  'table.bootstrap-tables': 'Bootstrap Tables',
+  'table.bootstrap-basic': 'Basic Table',
 };

@@ -6,6 +6,7 @@ import {
   themeColorStorageKey,
   themeRadiusStorageKey,
 } from 'constants/defaultValues';
+// import User from 'views/user';
 
 export const mapOrder = (array, order, key) => {
   // eslint-disable-next-line func-names
@@ -159,6 +160,8 @@ export const getCurrentUser = () => {
     console.log('>>>>: src/helpers/Utils.js  : getCurrentUser -> error', error);
     user = null;
   }
+  console.log('local storage esta devolviendo: ')
+  console.log(user)
   return user;
 };
 

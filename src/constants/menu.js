@@ -3,16 +3,9 @@ import { adminRoot } from './defaultValues';
 const data = [
   {
     id: 'gogo',
-    icon: 'simple-icon-frame',
-    label: 'menu.gogo',
-    to: `${adminRoot}/gogo`,
-    subs: [
-      {
-        icon: 'simple-icon-paper-plane',
-        label: 'menu.start',
-        to: `${adminRoot}/gogo/start`,
-      },
-    ],
+    icon: 'iconsminds-police-station',
+    label: 'menu.inicio',
+    to: `${adminRoot}/inicio`,
   },
   {
     id: 'generarqr',

@@ -18,7 +18,7 @@ const Start = ({ match }) => (
           <IntlMessages id="menu.start" />
         </p>
         <p>
-          @yield (contenido)
+          dashboard
         </p>
       </Colxx>
     </Row>

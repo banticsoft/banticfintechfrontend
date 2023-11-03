@@ -22,4 +22,4 @@ export {
   resetPassword,
 } from './auth/actions';
 
-export { generarQR, generarQRSuccess, generarQRError} from './qr/actions'
+export { generarQRAct, generarQRSuccessAct, generarQRErrorAct} from './qr/actions'
