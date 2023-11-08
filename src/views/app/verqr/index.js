@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { 
   Button, 
   Row,
-  Card,
-  CardBody,
+  // Card,
+  // CardBody,
   // CardTitle,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
+  // Modal,
+  // ModalHeader,
+  // ModalBody,
+  // ModalFooter,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import IntlMessages from 'helpers/IntlMessages';
@@ -16,15 +16,17 @@ import { Colxx, Separator } from 'components/common/CustomBootstrap';
 // import Breadcrumb from 'containers/navs/Breadcrumb';
 import ImageB64 from 'components/base64toimg/ImageB64';
 import { connect } from 'react-redux';
-import verificadoImg from 'assets/img/verificado/verificado.png'
+// import verificadoImg from 'assets/img/verificado/verificado.png'
 // import ImageB64 from 'components/base64toimg/ImageB64'
 import { verificarQR } from 'api/auth';
 import { getCurrentUser } from 'helpers/Utils';
+import Verificado from './Verificado'
 // import data from 'data/notifications';
 
 const VerQRPage = ({ miqr }) => {
 
-  const [modalBasic, setModalBasic] = useState(false);
+  // const [modalBasic, setModalBasic] = useState(false);
+  const [isDisable, setIsDisable] = useState(false);
 
   // const [isVerificado, setIsverificado] = useState(false);
 
@@ -56,7 +58,8 @@ const VerQRPage = ({ miqr }) => {
       const resultado = await verificarQR(data);
       if (resultado.data.codError === "0"){
         console.log(resultado.data)
-        setModalBasic(true);
+        // setModalBasic(true);
+        setIsDisable(!isDisable)
       }      
     } catch (error) {
       console.log("error al verificar el QR")
@@ -105,17 +108,24 @@ const VerQRPage = ({ miqr }) => {
             <IntlMessages id="menu.verqr" />
           </p>
 
-          <div className="d-flex justify-content-center align-items-center vh-60">
-            <div className="p-5 rounded-2 text-secondary" style={{ width: '35 rem', border: '1 px solid #EE7A19'}}>
+          <div className="d-flex justify-content-center align-items-center">
+            <div className="p-5 rounded-2 text-secondary" style={{ width: '35rem', border: '1 px solid #EE7A19'}}>
+            <div className="d-flex justify-content-center">
+                { isDisable ? 
+                (                  
+                  <Verificado/>
+                ) :
+                 undefined}
+              </div>
               <div className="d-flex justify-content-center">
-                { miqr ? (<ImageB64 base64String = {miqr.qr}/>) : <h3>debes generar un nuevo QR ...</h3>}
+                { miqr ? (<ImageB64 base64String = {miqr.qr} isDisable = {isDisable}/>) : <h3>debes generar un nuevo QR ...</h3>}
               </div>
 
               {/* imprimir ? (<PDFViewer style={{width: "100%", height: "90vh"}}> <ImprimirPDFPage/> </PDFViewer>) : <h1>cargando ...</h1> */} 
               {/* {imprimir ? (<h1> vas a imprimir algo </h1>) : <h1>cargando ...</h1>} */}
 
               {/* <div className="flex gap-x-2 w-full justify-between">   */}                  
-              <div className="d-flex justify-content-around">                    
+              <div className="d-flex justify-content-around mt-4">                    
                   <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2' onClick={ handleGuardarQR }>Guardar</Button>
                   <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Imprimir</Button>
                   
@@ -123,7 +133,7 @@ const VerQRPage = ({ miqr }) => {
                       <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Nuevo QR</Button>
                   </NavLink>                
                   {/* <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificado}>Verificar</Button> */}
-                  <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificar}>Verificar</Button>
+                  <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificar} disabled={isDisable}>Verificar</Button>
                                  
               </div>
             </div>
@@ -137,7 +147,7 @@ const VerQRPage = ({ miqr }) => {
             undefined
           }   */}  
 
-          <Card className="mb-4">
+          {/* <Card className="mb-4">
             <CardBody>
               
               <div>
@@ -146,7 +156,6 @@ const VerQRPage = ({ miqr }) => {
                   toggle={() => setModalBasic(!modalBasic)}
                 >
                   <ModalHeader>
-                    {/* <IntlMessages id="Verificado" /> */}
                     Verificado
                   </ModalHeader>
                   <ModalBody>
@@ -165,7 +174,7 @@ const VerQRPage = ({ miqr }) => {
                 </Modal>
               </div>
             </CardBody>
-          </Card>
+          </Card> */}
 
         </Colxx>
       </Row>

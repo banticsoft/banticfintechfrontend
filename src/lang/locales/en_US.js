@@ -63,5 +63,5 @@ module.exports = {
 
   /* 07.20.Tables */
   'table.bootstrap-tables': 'Bootstrap Tables',
-  'table.bootstrap-basic': 'Basic Table',
+  'table.bootstrap-basic': 'Tabla',
 };

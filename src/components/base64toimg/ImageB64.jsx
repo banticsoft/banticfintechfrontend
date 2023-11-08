@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ImageB64 = ({ base64String }) => {
+const ImageB64 = ({ base64String, isDisable }) => {
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ImageB64 = ({ base64String }) => {
   }, [base64String]);
 
   return (
-    <div>
+    <div className= {isDisable ? 'd-none' : ''}>
       {imageUrl ? (
         // <img src={imageUrl} alt="Imagen" width={500} height={500}/>
         <img src={imageUrl} alt="Imagen"/>

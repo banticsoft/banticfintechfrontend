@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
 // import logo from './../../assets/img/logo.png'
-import logo from 'assets/img/logo/logo.jpeg'
+import logo from 'assets/img/logo/logo_bantic.png'
 // import { getCurrentUser } from 'helpers/Utils';
 
 import {

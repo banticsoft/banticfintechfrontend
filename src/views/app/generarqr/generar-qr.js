@@ -20,8 +20,9 @@ const GenerarQR = ({ history, miqr, generarQRAction, currentUser, match }) => {
 
   const [amount] = useState('');
   const [glosa] = useState('');
-  console.log("valor del qr ...")
+  // console.log("valor del qr ...")
   console.log(miqr)
+  // console.log(currentUser)
 
   const initialValues = { amount, glosa };
 

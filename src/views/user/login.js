@@ -9,7 +9,7 @@ import { NotificationManager } from 'components/common/react-notifications';
 import { loginUser } from 'redux/actions';
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
-import logo from 'assets/img/logo/logo.jpeg'
+import logo from 'assets/img/logo/logo_bantic.png'
 
 const validatePassword = (value) => {
   let error;

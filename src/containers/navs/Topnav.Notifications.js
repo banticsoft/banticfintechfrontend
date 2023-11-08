@@ -38,7 +38,7 @@ const TopnavNotifications = () => {
           className="header-icon notificationButton"
           color="empty"
         >
-          <i className="simple-icon-bell" />
+          <i className="simple-icon-bell" /> {/* campanita */}
           <span className="count">4</span>
         </DropdownToggle>
         <DropdownMenu

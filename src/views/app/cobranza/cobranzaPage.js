@@ -6,12 +6,23 @@ import Breadcrumb from 'containers/navs/Breadcrumb';
 import { getCurrentUser } from 'helpers/Utils';
 import { getAllQRByUser } from 'api/auth';
 import BotonVerQR from './BotonVerQR'
+import DataTablePagination from './DatatablePagination'
 
 const CobranzaPage = ({ match }) => {
     const [allQRByUser, setAllQRByUser] = useState([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentTupla, setCurrentTupla] = useState(null);
+
+    /* eslint-disable */
+    const [productsPerPage, setProductsPerPage] = useState(10);
+    /* eslint-enable */
+    const [curentPage, setCurrentPage] = useState(1);
+    
+    const totolProduct = allQRByUser.length
+
+    const lastIndex = curentPage * productsPerPage // 1 * 6 = 6  |  2 * 6 = 12  |  3 * 6 = 18
+    const firstIndex = lastIndex - productsPerPage // 6 - 6 = 0  |  12 - 6 = 6  |  18 - 6 = 12
 
     useEffect( async () => {
       try {
@@ -71,8 +82,9 @@ const CobranzaPage = ({ match }) => {
                     <th>Cliente</th>
                     <th>Monto</th>
                     <th>Moneda</th>
-                    <th>Estado</th>
+                    <th style={{width: '7%'}}>Estado</th>
                     <th>Fecha de Expiracion</th>
+                    <th>Fecha de Pago</th>
                     <th>Ver QR</th>                    
                     <th>Verificar</th>
                     <th>Cancelar</th>
@@ -81,7 +93,7 @@ const CobranzaPage = ({ match }) => {
                 <tbody>
 
                 {
-                  allQRByUser.length === 0 ? <tr><td colSpan="9" align='center'>Cargando ...</td></tr> : undefined
+                  allQRByUser.length === 0 ? <tr><td colSpan="10" align='center'>Cargando ...</td></tr> : undefined
                 }            
                 { 
                   allQRByUser.map((tupla) => (
@@ -94,17 +106,22 @@ const CobranzaPage = ({ match }) => {
                           {/* <td> {tupla.status} </td>  */}                         
                           { 
                             // eslint-disable-next-line
-                            parseInt(tupla.status, 10) === 0 ? <td> sin pagar </td> : <td style={{background: '#5abd71', color: 'white'}}> <span style={{background: '#5abd71', color: 'white'}}>pagado</span> </td>
+                            parseInt(tupla.status, 10) === 0 ? <td> sin pagar </td> : <td style={{background: '#5abd71', color: 'white', textAlign: 'center', fontWeight:'bold'}}> <span style={{background: '#5abd71', color: 'white'}}>pagado</span> </td>
                           }
                           
-                          <td> {new Date(tupla.expirationdate).toLocaleDateString()} </td>
+                          <td style={{textAlign:'center'}}> {new Date(tupla.expirationdate).toLocaleDateString()} </td>
+
+                          { 
+                            // eslint-disable-next-line
+                            parseInt(tupla.status, 10) === 0 ? <td style={{textAlign:'center'}}> - </td> : <td style={{fontWeight:'', textAlign: 'center'}}> <span>25/10/2023 15:30</span> </td>
+                          }
                           {
                             parseInt(tupla.status, 10) === 0 ?
                             
                               <>
-                              <td><Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'  onClick={ () => handleVerModal(tupla) }>Ver QR</Button></td>
-                              <td><Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Verificar</Button></td> 
-                              <td><Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Cancelar</Button></td>
+                              <td><Button className='px-3 py-1' onClick={ () => handleVerModal(tupla) }>Ver QR</Button></td>
+                              <td><Button className='px-3 py-1'>Verificar</Button></td> 
+                              <td><Button className='px-3 py-1'>Cancelar</Button></td>
                               </>
                             
                             :
@@ -121,10 +138,17 @@ const CobranzaPage = ({ match }) => {
                           
                      </tr> 
                   
-                  ))
+                  )).slice(firstIndex, lastIndex)
                 } 
                 </tbody>                
               </Table>
+
+              <DataTablePagination
+                productsPerPage={productsPerPage} 
+                curentPage={curentPage} 
+                setCurrentPage={setCurrentPage}
+                totolProduct={totolProduct}
+              />
 
               {isModalOpen && (
                   <BotonVerQR
