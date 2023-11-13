@@ -3,6 +3,7 @@
   "version": "5.3.1",
   "description": "Gogo - React Bootstrap 4 Admin Dashboard Template",
   "private": true,
+  "homepage": "https://frontendbf.banticapps.com",
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
     "@testing-library/jest-dom": "^5.13.0",
@@ -14,6 +15,7 @@
     "classnames": "2.3.1",
     "firebase": "^8.6.5",
     "formik": "^2.2.9",
+    "js-cookie": "^3.0.5",
     "moment": "2.29.1",
     "mousetrap": "^1.6.5",
     "node-sass": "^6.0.0",

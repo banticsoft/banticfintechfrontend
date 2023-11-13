@@ -53,9 +53,9 @@ module.exports = {
 
 
   /* 04.Error Page */
-  'pages.error-title': 'Ooops... looks like an error occurred!',
-  'pages.error-code': 'Error code',
-  'pages.go-back-home': 'GO BACK HOME',
+  'pages.error-title': 'Ooops... ¡Parece que ocurrió un error!',
+  'pages.error-code': 'codigo de error',
+  'pages.go-back-home': 'IR A INICIO',
 
   /* 05.Generar QR */
   'generarqr.monto': 'Monto',

@@ -10,6 +10,7 @@ import { loginUser } from 'redux/actions';
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import logo from 'assets/img/logo/logo_bantic.png'
+import { getCurrentUser } from 'helpers/Utils';
 
 const validatePassword = (value) => {
   let error;
@@ -43,6 +44,14 @@ const validateUser = (value) => {
 
 const Login = ({ history, loading, error, loginUserAction }) => {
   // console.log("valor de loading en el componente: ", loading)
+
+  const currentUser = getCurrentUser();
+  console.log(currentUser)
+  if (currentUser){
+    // navigate('/app')
+    history.push('/app');
+  }
+
   const [email] = useState('');
   const [password] = useState('');
 
@@ -87,7 +96,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
             <div className='d-flex justify-content-center mb-3'>
               <NavLink to="#" className="white">              
                 <img src={ logo } alt="banticfintech" style={{ height: '3rem', width: "11.5rem" }} />
-            </NavLink>
+              </NavLink>
             </div>
             
             <CardTitle className="mb-4">

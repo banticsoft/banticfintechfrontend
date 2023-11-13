@@ -5,6 +5,7 @@ import { setCurrentUser, getCurrentUser } from 'helpers/Utils';
  import { loginRequest, generarQRRequest } from 'api/auth';
  import { v4 as uuid} from 'uuid';
  import { generarQRErrorAct, generarQRSuccessAct } from 'redux/qr/actions';
+ import cookies from 'js-cookie';
  
 import {
   LOGIN_USER,
@@ -161,6 +162,7 @@ function* logout({ payload }) {
   // console.log(`nombre de la persona ${person}`)
   const { history } = payload;
   setCurrentUser();
+  cookies.remove("token")
   // yield call(logoutAsync, history);
   yield call(logoutSync, history);
 }

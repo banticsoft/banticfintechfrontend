@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { adminRoot } from 'constants/defaultValues';
+import logo from 'assets/img/logo/logo_bantic.png'
 
 const Error = () => {
   useEffect(() => {
@@ -25,13 +26,15 @@ const Error = () => {
             <Colxx xxs="12" md="10" className="mx-auto my-auto">
               <Card className="auth-card">
                 <div className="position-relative image-side ">
-                  <p className="text-white h2">MAGIC IS IN THE DETAILS</p>
-                  <p className="white mb-0">Yes, it is indeed!</p>
+                  <p className="text-white h2">BANTIC FINTECH</p>
+                  {/* <p className="white mb-0">Yes, it is indeed!</p> */}
                 </div>
                 <div className="form-side">
-                  <NavLink to="/" className="white">
-                    <span className="logo-single" />
-                  </NavLink>
+                  <div className='d-flex justify-content-center mb-3'>
+                    <NavLink to="#" className="white">              
+                      <img src={ logo } alt="banticfintech" style={{ height: '3rem', width: "11.5rem" }} />
+                    </NavLink>
+                  </div>
                   <CardTitle className="mb-4">
                     <IntlMessages id="pages.error-title" />
                   </CardTitle>

@@ -19,9 +19,9 @@ import {
 import { getDirection } from './helpers/Utils';
 import { ProtectedRoute } from './helpers/authHelper';
 
-const ViewHome = React.lazy(() =>
-  import(/* webpackChunkName: "views" */ './views/home')
-);
+// const ViewHome = React.lazy(() =>
+//  import(/* webpackChunkName: "views" */ './views/home')
+// );
 const ViewApp = React.lazy(() =>
   import(/* webpackChunkName: "views-app" */ './views/app')
 );
@@ -98,11 +98,13 @@ class App extends React.Component {
                     render={(props) => <ViewUser {...props} />}
                   /> */}
 
-                  <Route
+                  <Redirect exact from="/" to={adminRoot} />
+
+                  {/* <Route
                     path="/"
                     exact
                     render={(props) => <ViewHome {...props} />}
-                  />
+                  /> */}
 
                   {/*
                   <Redirect exact from="/" to={adminRoot} />
