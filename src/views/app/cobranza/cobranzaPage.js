@@ -7,6 +7,7 @@ import { getCurrentUser } from 'helpers/Utils';
 import { getAllQRByUser } from 'api/auth';
 import BotonVerQR from './BotonVerQR'
 import DataTablePagination from './DatatablePagination'
+import './cobranzaPage.css';
 
 const CobranzaPage = ({ match }) => {
     const [allQRByUser, setAllQRByUser] = useState([]);
@@ -99,29 +100,29 @@ const CobranzaPage = ({ match }) => {
                   allQRByUser.map((tupla) => (
                                  
                       <tr key={tupla.id}>
-                          <th scope="row"> {tupla.id} </th>
-                          <td> {tupla.userName} </td>
-                          <td> {tupla.amount} </td>
-                          <td> {tupla.currency} </td>
+                          <td data-titulo="ID"> {tupla.id} </td>
+                          <td data-titulo="Cliente"> {tupla.userName} </td>
+                          <td data-titulo="Monto"> {tupla.amount} </td>
+                          <td data-titulo="Moneda"> {tupla.currency} </td>
                           {/* <td> {tupla.status} </td>  */}                         
                           { 
                             // eslint-disable-next-line
-                            parseInt(tupla.status, 10) === 0 ? <td> sin pagar </td> : <td style={{background: '#5abd71', color: 'white', textAlign: 'center', fontWeight:'bold'}}> <span style={{background: '#5abd71', color: 'white'}}>pagado</span> </td>
+                            parseInt(tupla.status, 10) === 0 ? <td data-titulo="Estado"> sin pagar </td> : <td data-titulo="Estado" style={{background: '#5abd71', color: 'white', textAlign: 'center', fontWeight:'bold'}}> <span style={{background: '#5abd71', color: 'white'}}>pagado</span> </td>
                           }
                           
-                          <td style={{textAlign:'center'}}> {new Date(tupla.expirationdate).toLocaleDateString()} </td>
+                          <td data-titulo="Fecha expiracion" style={{textAlign:'center'}}> {new Date(tupla.expirationdate).toLocaleDateString()} </td>
 
                           { 
                             // eslint-disable-next-line
-                            parseInt(tupla.status, 10) === 0 ? <td style={{textAlign:'center'}}> - </td> : <td style={{fontWeight:'', textAlign: 'center'}}> <span>25/10/2023 15:30</span> </td>
+                            parseInt(tupla.status, 10) === 0 ? <td data-titulo="Fecha Pago" style={{textAlign:'center'}}> - </td> : <td data-titulo="Fecha Pago" style={{fontWeight:'', textAlign: 'center'}}> <span>25/10/2023 15:30</span> </td>
                           }
                           {
                             parseInt(tupla.status, 10) === 0 ?
                             
                               <>
-                              <td><Button className='px-3 py-1' onClick={ () => handleVerModal(tupla) }>Ver QR</Button></td>
-                              <td><Button className='px-3 py-1'>Verificar</Button></td> 
-                              <td><Button className='px-3 py-1'>Cancelar</Button></td>
+                              <td data-button="Ver QR"><Button className='px-3 py-1' onClick={ () => handleVerModal(tupla) }>Ver QR</Button></td>
+                              <td data-button="Verifiacar"><Button className='px-3 py-1'>Verificar</Button></td> 
+                              <td data-button="Cancelar"><Button className='px-3 py-1'>Cancelar</Button></td>
                               </>
                             
                             :
@@ -143,12 +144,15 @@ const CobranzaPage = ({ match }) => {
                 </tbody>                
               </Table>
 
-              <DataTablePagination
-                productsPerPage={productsPerPage} 
-                curentPage={curentPage} 
-                setCurrentPage={setCurrentPage}
-                totolProduct={totolProduct}
-              />
+              
+              <div className='overflow-auto'>
+                <DataTablePagination
+                  productsPerPage={productsPerPage} 
+                  curentPage={curentPage} 
+                  setCurrentPage={setCurrentPage}
+                  totolProduct={totolProduct}
+                />
+              </div>
 
               {isModalOpen && (
                   <BotonVerQR

@@ -297,11 +297,7 @@ const TopNav = ({
 
       <NavLink className="navbar-logo" to='#'>         
         <img src={ logo } alt="banticfintech" style={{ height: '3rem', width: "11.5rem" }} />
-      </NavLink>
-
-      {/* <div className="flex justify-center">
-          <img src={ logo } alt="login-icon" style={{ height: '3rem', width: "11.5rem" }} />
-      </div> */}
+      </NavLink>      
 
       <div className="navbar-right">
         {isDarkSwitchActive && <TopnavDarkSwitch />}

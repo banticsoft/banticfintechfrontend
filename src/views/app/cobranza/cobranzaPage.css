@@ -1,0 +1,50 @@
+@media (max-width: 30em) { /* 30 * 16px = 480px (tamaño de un celular mas o menos) */
+    
+    table{
+        width: 100%;
+        font-size: .9em;
+    }
+    table tr{
+        display: flex; /* ajusta el tamaño de la caja al contenido*/
+        flex-direction: column;
+        border: 1px solid gray;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+    table thead{
+        display: none;
+    }
+
+    table td[data-titulo]{
+        display: flex;    
+    }
+    table td[data-titulo]::before{
+        content: attr( data-titulo);
+        width: 100px;
+        color: silver;
+        font-weight: bold;
+
+        text-align: left;
+    }
+
+    table td, table th{
+        border: none !important;
+    }
+
+    /* .data-button{
+        display: flex;
+        flex-direction: row;
+        background: red;
+    } */
+
+    /* table td:nth-child(9){
+        display: inline;
+        background: aqua;
+    } */
+
+    table td[data-button]{
+        /* display: flex; */
+        text-align: center; 
+        /* width: 100% !important; */
+    }
+}

@@ -1,0 +1,30 @@
+@media (max-width: 30em) { /* 30 * 16px = 480px (tamaño de un celular mas o menos) */
+    
+    .movil{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+    }
+
+    .movil-item{
+        padding: .5rem .25rem !important; /*  */
+        margin: .25rem 0 !important;
+        /* width: 100%; */
+    }
+
+    .movil-item-button{
+        width: 100%;
+        /* background: violet; */
+    } 
+    
+    .movil-item:nth-child(2){
+        display: none;
+    }
+
+    /* .movil-item:nth-child(3){
+        background: violet;
+        padding: 0;
+        margin: 0;
+    } */
+}

@@ -21,6 +21,7 @@ import { connect } from 'react-redux';
 import { verificarQR } from 'api/auth';
 import { getCurrentUser } from 'helpers/Utils';
 import Verificado from './Verificado'
+import './index.css'
 // import data from 'data/notifications';
 
 const VerQRPage = ({ miqr }) => {
@@ -125,15 +126,15 @@ const VerQRPage = ({ miqr }) => {
               {/* {imprimir ? (<h1> vas a imprimir algo </h1>) : <h1>cargando ...</h1>} */}
 
               {/* <div className="flex gap-x-2 w-full justify-between">   */}                  
-              <div className="d-flex justify-content-around mt-4">                    
-                  <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2' onClick={ handleGuardarQR }>Guardar</Button>
-                  <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Imprimir</Button>
+              <div className="d-flex justify-content-around mt-4 movil">                    
+                  <Button className='text-white px-4 py-2 my-2 movil-item' onClick={ handleGuardarQR }>Guardar</Button>
+                  <Button className='text-white px-4 py-2 my-2 movil-item'>Imprimir</Button>
                   
-                  <NavLink to="/app/generarqr/generarqr">
-                      <Button className='bg-sky-500 text-white px-4 py-2 rounded-md my-2'>Nuevo QR</Button>
+                  <NavLink to="/app/generarqr/generarqr movil-item">
+                      <Button className='text-white px-4 py-2 my-2 movil-item-button'>Nuevo QR</Button>
                   </NavLink>                
                   {/* <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificado}>Verificar</Button> */}
-                  <Button className='bg-orange-400 text-white px-4 py-2 rounded-md my-2' onClick={handleVerificar} disabled={isDisable}>Verificar</Button>
+                  <Button className='text-white px-4 py-2 my-2 movil-item' onClick={handleVerificar} disabled={isDisable}>Verificar</Button>
                                  
               </div>
             </div>
