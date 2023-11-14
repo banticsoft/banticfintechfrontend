@@ -7,8 +7,8 @@
     "generar-qr.js": "/static/js/generar-qr.8e728c4f.chunk.js",
     "generar-qr.js.map": "/static/js/generar-qr.8e728c4f.chunk.js.map",
     "main.css": "/static/css/main.9f2cfa9a.chunk.css",
-    "main.js": "/static/js/main.8a762759.chunk.js",
-    "main.js.map": "/static/js/main.8a762759.chunk.js.map",
+    "main.js": "/static/js/main.c2e84c05.chunk.js",
+    "main.js.map": "/static/js/main.c2e84c05.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.0d871442.js",
     "runtime-main.js.map": "/static/js/runtime-main.0d871442.js.map",
     "second.js": "/static/js/second.fa9d7b4d.chunk.js",
@@ -148,6 +148,6 @@
     "static/css/17.5c3f929f.chunk.css",
     "static/js/17.7aef397d.chunk.js",
     "static/css/main.9f2cfa9a.chunk.css",
-    "static/js/main.8a762759.chunk.js"
+    "static/js/main.c2e84c05.chunk.js"
   ]
 }
