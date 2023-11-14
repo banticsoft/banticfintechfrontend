@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const API = 'http://localhost:3001/api/v1'
-const API_SERVER = 'https://backendbf.banticapps.com'
+const API_SERVER = 'https://backendbf.banticapps.com/api/v1'
 // const API = process.env.REACT_APP_API_SERVER || API_SERVER
 const API = API_SERVER
 
