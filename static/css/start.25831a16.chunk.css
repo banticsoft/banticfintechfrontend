@@ -1,0 +1,2 @@
+@media (max-width:30em){table{width:100%;font-size:.9em}table tr{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;border:1px solid grey;padding:1em;margin-bottom:1em}table thead{display:none}table td[data-titulo]{display:-webkit-flex;display:flex}table td[data-titulo]:before{content:attr(data-titulo);width:100px;color:silver;font-weight:700;text-align:left}table td,table th{border:none!important}table td[data-button]{text-align:center}}
+/*# sourceMappingURL=start.25831a16.chunk.css.map */
